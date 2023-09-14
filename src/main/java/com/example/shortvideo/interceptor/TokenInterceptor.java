@@ -1,9 +1,9 @@
-package com.example.express.interceptor;
+package com.example.shortvideo.interceptor;
 
-import com.example.express.exception.TokenException;
-import com.example.express.utils.TokenUtil;
+import com.example.shortvideo.utils.TokenUtil;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.servlet.HandlerInterceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletResponse;
  * token 拦截器，负责拦截 token 过期的请求
  *
  * @author 985892345
- * 2022/12/12 23:26
  */
 public class TokenInterceptor implements HandlerInterceptor {
-  
+
   @Override
   public boolean preHandle(
     @NotNull HttpServletRequest request,
@@ -29,7 +28,7 @@ public class TokenInterceptor implements HandlerInterceptor {
     String username = TokenUtil.getUsernameByToken(token);
     if (username == null) {
       // token 已过期
-      throw new TokenException();
+      return false;
     }
     return true;
   }

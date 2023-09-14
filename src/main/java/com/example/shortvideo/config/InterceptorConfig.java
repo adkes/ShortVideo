@@ -1,6 +1,6 @@
-package com.example.express.config;
+package com.example.shortvideo.config;
 
-import com.example.express.interceptor.TokenInterceptor;
+import com.example.shortvideo.interceptor.TokenInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
-  
+
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(new TokenInterceptor())

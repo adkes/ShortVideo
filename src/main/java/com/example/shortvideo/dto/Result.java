@@ -1,4 +1,4 @@
-package com.hmdp.dto;
+package com.example.shortvideo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
