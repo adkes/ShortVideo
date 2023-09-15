@@ -13,7 +13,7 @@ public class PullApplication {
     public static void main(String[] args) throws Exception {
         System.err.println("开始播放");
         //rtmp服务器拉流地址（视频流服务器公网地址）
-        String inputPath = "rtmp://***/live/333";
+        String inputPath = "rtmp://10.20.77.55:1935/live/test3";
         PullStream pullStream = new PullStream();
         pullStream.getPullStream(inputPath);
     }

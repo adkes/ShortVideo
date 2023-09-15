@@ -19,6 +19,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
     registry.addInterceptor(new TokenInterceptor())
       .addPathPatterns("/**") // 拦截所有请求
       .excludePathPatterns("/error")
-      .excludePathPatterns("/account/**"); // 排除 /account/** 以下的请求
+      .excludePathPatterns("/user/**"); // 排除 /user/** 以下的请求
   }
 }

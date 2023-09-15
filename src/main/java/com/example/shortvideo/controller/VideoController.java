@@ -1,10 +1,7 @@
 package com.example.shortvideo.controller;
 
 import com.example.shortvideo.dto.Result;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +14,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("video")
 public class VideoController {
-    @PostMapping("videoUpload2")
-    public Object uploadFiled2(@RequestParam("file")MultipartFile multipartFile, final HttpServletResponse response,
+    @PostMapping("videoUpload")
+    public Result uploadFiled2(@RequestParam("file")MultipartFile multipartFile, final HttpServletResponse response,
                                final HttpServletRequest request){
         String rootPath = "D:\\data\\ShortVideo\\src\\main\\resources\\static";
         File fileDir = new File(rootPath);
@@ -32,6 +29,21 @@ public class VideoController {
             return Result.fail("视频上传失败");
         }
     }
+
+    @GetMapping("delete")
+    public Result delete(@RequestParam("name") String name){
+        String filePath = "D:\\data\\ShortVideo\\src\\main\\resources\\static\\" + name;
+
+        File file = new File(filePath);
+        boolean isDeleted = file.delete();
+
+        if (isDeleted) {
+            return Result.ok("文件删除成功");
+        } else {
+            return Result.fail("文件删除失败");
+        }
+    }
+
 
     private String saveIcon(MultipartFile multipartFile,String rootPath) throws IOException {
         String fileName = multipartFile.getOriginalFilename();
